@@ -20,6 +20,9 @@ public class frameWin {
         JLabel titleLable = new JLabel("Application Title Demo",JLabel.CENTER);
         frame.add(titleLable,BorderLayout.NORTH);
 
+        //   south button
+
+        frame.add(createButtonSubmit(), BorderLayout.SOUTH);
 
         //  west panels and buttons
 
@@ -54,5 +57,9 @@ public class frameWin {
     JButton createButtonThree(){
         JButton buttonThree = new JButton("Option 3");
         return buttonThree;
+    }
+    JButton createButtonSubmit(){
+        JButton submit = new JButton("Submit");
+        return submit;
     }
 }
