@@ -5,7 +5,12 @@ public class frameWin {
     JFrame frame;
 
     public frameWin(){
+        this(true);
+    }
+
+    public frameWin(boolean show){
         createFrame();
+        if (frame != null) frame.setVisible(show);
     }
 
     void createFrame() {
@@ -40,7 +45,7 @@ public class frameWin {
         JScrollPane scrollPane = new JScrollPane(textArea);
         frame.add(scrollPane,BorderLayout.CENTER);
 
-        frame.setVisible(true);
+        // visibility is controlled by constructors (keeps creation test-friendly)
 
     }
 
