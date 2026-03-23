@@ -70,4 +70,4 @@ public class FrameWin {
         SwingUtilities.invokeLater(FrameWin::new);
     }
 }
-}
+
