@@ -1,70 +1,73 @@
 import javax.swing.*;
 import java.awt.*;
-
-public class frameWin {
-    JFrame frame;
-
-    public frameWin(){
+ 
+public class FrameWin {
+ 
+    private JFrame frame;
+ 
+    public FrameWin() {
         this(true);
     }
-
-    public frameWin(boolean show){
+ 
+    public FrameWin(boolean show) {
         createFrame();
         if (frame != null) frame.setVisible(show);
     }
-
-    void createFrame() {
-        //  frame creation
+ 
+    private void createFrame() {
+        // Frame creation
         frame = new JFrame("Border Layout");
-        frame.setSize(600,400);
+        frame.setSize(600, 400);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(new BorderLayout());
-
-        //  North Lable
-
-        JLabel titleLable = new JLabel("Application Title Demo",JLabel.CENTER);
-        frame.add(titleLable,BorderLayout.NORTH);
-
-        //   south button
-
+ 
+        // North label
+        JLabel titleLabel = new JLabel("Application Title Demo", JLabel.CENTER);
+        frame.add(titleLabel, BorderLayout.NORTH);
+ 
+        // South button
         frame.add(createButtonSubmit(), BorderLayout.SOUTH);
-
-        //  west panels and buttons
-
+ 
+        // West panel with buttons (GridLayout — no constraint needed)
         JPanel westPanel = new JPanel();
-        westPanel.setLayout(new GridLayout(3,1));
-
-        westPanel.add(createButtonOne(), BorderLayout.WEST);
-        westPanel.add(createButtonTwo(), BorderLayout.WEST);
-        westPanel.add(createButtonThree(), BorderLayout.WEST);
+        westPanel.setLayout(new GridLayout(3, 1));
+        westPanel.add(createButtonOne());
+        westPanel.add(createButtonTwo());
+        westPanel.add(createButtonThree());
         frame.add(westPanel, BorderLayout.WEST);
-
-        //  center textarea
-
+ 
+        // Center text area with scroll support
         JTextArea textArea = new JTextArea();
         JScrollPane scrollPane = new JScrollPane(textArea);
-        frame.add(scrollPane,BorderLayout.CENTER);
-
-        // visibility is controlled by constructors (keeps creation test-friendly)
-
+        frame.add(scrollPane, BorderLayout.CENTER);
     }
-
-    //   buttons
-
-    JButton createButtonOne(){
+ 
+    private JButton createButtonOne() {
         JButton buttonOne = new JButton("Option 1");
+        buttonOne.addActionListener(e -> System.out.println("Option 1 clicked"));
         return buttonOne;
     }
-    JButton createButtonTwo(){
+ 
+    private JButton createButtonTwo() {
         JButton buttonTwo = new JButton("Option 2");
+        buttonTwo.addActionListener(e -> System.out.println("Option 2 clicked"));
         return buttonTwo;
     }
-    JButton createButtonThree(){
+ 
+    private JButton createButtonThree() {
         JButton buttonThree = new JButton("Option 3");
+        buttonThree.addActionListener(e -> System.out.println("Option 3 clicked"));
         return buttonThree;
     }
-    JButton createButtonSubmit(){
+ 
+    private JButton createButtonSubmit() {
         JButton submit = new JButton("Submit");
+        submit.addActionListener(e -> System.out.println("Submit clicked"));
         return submit;
     }
+ 
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(FrameWin::new);
+    }
+}
 }
